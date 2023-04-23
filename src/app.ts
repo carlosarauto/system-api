@@ -1,4 +1,6 @@
 import express from 'express';
+import 'express-async-errors';
+import { errorHandler } from './errors';
 
 const app = express();
 
@@ -11,5 +13,7 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.use(errorHandler);
 
 export default app;
