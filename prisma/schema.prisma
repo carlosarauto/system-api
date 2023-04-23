@@ -9,3 +9,90 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User{
+  id String @id @default(uuid())
+  name String @db.VarChar(254)
+  login String @db.VarChar(150) @unique
+  password String @db.VarChar(150)
+
+  @@map("users")
+}
+
+model Client{
+  id String @id @default(uuid())
+  name String @db.VarChar(254)
+  phone String @db.VarChar(20)
+  cars ClientsOnCars[]
+  orders Order[]
+
+  @@map("clients")
+}
+
+model Car{
+  id String @id @default(uuid())
+  name String @db.VarChar(254)
+  license_plate String @db.VarChar(50) @unique
+  list_image ListImage[]
+  owners ClientsOnCars[]
+  orders Order[]
+
+  @@map("cars")
+}
+
+model ListImage{
+  id String @id @default(uuid())
+  image String @db.VarChar(200)
+  car Car @relation(fields: [car_id], references: [id], onDelete: Cascade)
+  car_id String
+
+  @@map("list_image")
+}
+
+model ClientsOnCars{
+  client Client @relation(fields: [client_id], references: [id], onDelete: Cascade)
+  client_id String
+  car Car @relation(fields: [car_id], references: [id], onDelete: Cascade)
+  car_id String
+  is_active Boolean @default(true)
+  created_at DateTime @default(now())
+
+  @@id([client_id,car_id])
+  @@map("clients_cars")
+}
+
+model Service{
+  id String @id @default(uuid())
+  name String @db.VarChar(254) @unique
+  price Decimal @db.Decimal(7,2)
+  orders ServicesOnOrders[]
+
+  @@map("services")
+}
+
+model Order{
+  id Int @id @default(autoincrement())
+  description String? @db.Text()
+  price Decimal @db.Decimal(7,2)
+  services ServicesOnOrders[]
+  car Car @relation(fields: [car_id], references: [id], onDelete: Cascade)
+  car_id String
+  client Client @relation(fields: [client_id], references: [id], onDelete: Cascade)
+  client_id String
+
+  @@map("orders")
+}
+
+model ServicesOnOrders{
+  service Service @relation(fields: [service_id], references: [id], onDelete: Cascade)
+  service_id String
+  order Order @relation(fields: [order_id], references: [id], onDelete: Cascade)
+  order_id Int
+  description String? @db.Text()
+  price Decimal @db.Decimal(7,2)
+
+  @@id([service_id,order_id])
+  @@map("services_orders")
+}
+
+
