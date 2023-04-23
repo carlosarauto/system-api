@@ -1,8 +1,8 @@
 {
-  "name": "sistema",
+  "name": "system-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
