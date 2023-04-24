@@ -5,7 +5,7 @@ import {
   retrieveCarController,
   updateCarController,
   deleteCarController,
-} from '../controllers/cars.controllers';
+} from '../controllers';
 import { validateSchemaMiddleware } from '../middlewares';
 import { CarCreateSchema, CarUpdateRequestSchema } from '../schemas/car.schema';
 
