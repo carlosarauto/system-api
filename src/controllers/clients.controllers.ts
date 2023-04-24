@@ -5,7 +5,7 @@ import {
   retrieveClientService,
   updateClientService,
   deleteClientService,
-} from '../services/clients';
+} from '../services';
 
 export const createClientController = async (req: Request, res: Response) => {
   const client = await createClientService(req.body);

@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 import {
   createUserService,
   listUserService,
+  retrieveUserService,
   updateUserService,
   deleteUserService,
-  retrieveUserService,
-} from '../services/users';
+} from '../services';
 
 export const createUserController = async (req: Request, res: Response) => {
   const user = await createUserService(req.body);
