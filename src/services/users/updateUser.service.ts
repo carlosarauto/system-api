@@ -1,18 +1,18 @@
 import { hashSync } from 'bcryptjs';
 import { AppError } from '../../errors';
 import prisma from '../../prisma';
-import { Prisma } from '@prisma/client';
 import { UserReturnSchema } from '../../schemas';
+import { IUserUpdateRequest } from '../../interfaces/users.interfaces';
 
 export const updateUserService = async (
   id: string,
-  { name, login, password }: Prisma.UserUpdateInput,
+  { name, login, password }: IUserUpdateRequest,
 ) => {
   if (password) {
-    password = hashSync(String(password), 10);
+    password = hashSync(password, 10);
   }
+
   if (login) {
-    login = String(login);
     const user = await prisma.user.findUnique({ where: { login } });
     if (user) {
       throw new AppError(`${login} already exists`, 409);

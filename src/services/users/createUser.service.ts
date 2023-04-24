@@ -1,14 +1,14 @@
 import prisma from '../../prisma';
 import { hashSync } from 'bcryptjs';
 import { AppError } from '../../errors';
-import { Prisma } from '@prisma/client';
 import { UserReturnSchema } from '../../schemas';
+import { IUserRequest } from '../../interfaces/users.interfaces';
 
 export const createUserService = async ({
   name,
   login,
   password,
-}: Prisma.UserCreateInput) => {
+}: IUserRequest) => {
   let user = await prisma.user.findUnique({
     where: { login },
   });
