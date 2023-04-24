@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import { errorHandler } from './errors';
-import { carRouter, clientRouter, userRouter } from './router';
+import { carRouter, clientRouter, serviceRouter, userRouter } from './router';
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 app.use('/users', userRouter);
 app.use('/clients', clientRouter);
 app.use('/cars', carRouter);
+app.use('/services', serviceRouter);
 
 app.use(errorHandler);
 
