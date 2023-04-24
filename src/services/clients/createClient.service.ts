@@ -1,11 +1,8 @@
 import prisma from '../../prisma';
-import { Prisma } from '@prisma/client';
 import { ClientReturnSchema } from '../../schemas';
+import { IClientRequest } from '../../interfaces';
 
-export const createClientService = async ({
-  name,
-  phone,
-}: Prisma.ClientCreateInput) => {
+export const createClientService = async ({ name, phone }: IClientRequest) => {
   const client = await prisma.client.create({
     data: {
       name,

@@ -1,6 +1,6 @@
 import { AppError } from '../../errors';
 import prisma from '../../prisma';
-import { IServiceUpdateRequest } from '../../interfaces/services.interfaces';
+import { IServiceUpdateRequest } from '../../interfaces';
 
 export const updateServiceService = async (
   id: string,

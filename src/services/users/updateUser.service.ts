@@ -2,7 +2,7 @@ import { hashSync } from 'bcryptjs';
 import { AppError } from '../../errors';
 import prisma from '../../prisma';
 import { UserReturnSchema } from '../../schemas';
-import { IUserUpdateRequest } from '../../interfaces/users.interfaces';
+import { IUserUpdateRequest } from '../../interfaces';
 
 export const updateUserService = async (
   id: string,

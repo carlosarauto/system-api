@@ -1,11 +1,11 @@
 import { AppError } from '../../errors';
 import prisma from '../../prisma';
-import { Prisma } from '@prisma/client';
 import { ClientReturnSchema } from '../../schemas';
+import { IClientUpdateRequest } from '../../interfaces';
 
 export const updateClientService = async (
   id: string,
-  { name, phone }: Prisma.ClientUpdateInput,
+  { name, phone }: IClientUpdateRequest,
 ) => {
   try {
     const client = await prisma.client.update({

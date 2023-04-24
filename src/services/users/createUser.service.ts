@@ -2,7 +2,7 @@ import prisma from '../../prisma';
 import { hashSync } from 'bcryptjs';
 import { AppError } from '../../errors';
 import { UserReturnSchema } from '../../schemas';
-import { IUserRequest } from '../../interfaces/users.interfaces';
+import { IUserRequest } from '../../interfaces';
 
 export const createUserService = async ({
   name,

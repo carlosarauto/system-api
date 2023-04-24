@@ -1,6 +1,6 @@
 import prisma from '../../prisma';
 import { CarReturnSchema } from '../../schemas';
-import { ICarRequest } from '../../interfaces/cars.interfaces';
+import { ICarRequest } from '../../interfaces';
 
 export const createCarService = async (
   { name, license_plate, list_image }: ICarRequest,

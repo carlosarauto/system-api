@@ -1,7 +1,7 @@
 import { AppError } from '../../errors';
 import prisma from '../../prisma';
 import { CarReturnSchema } from '../../schemas';
-import { ICarUpdateRequest } from '../../interfaces/cars.interfaces';
+import { ICarUpdateRequest } from '../../interfaces';
 
 export const updateCarService = async (
   id: string,

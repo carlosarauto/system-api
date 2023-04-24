@@ -1,6 +1,6 @@
 import prisma from '../../prisma';
 import { AppError } from '../../errors';
-import { IServiceRequest } from '../../interfaces/services.interfaces';
+import { IServiceRequest } from '../../interfaces';
 
 export const createServiceService = async ({
   name,
